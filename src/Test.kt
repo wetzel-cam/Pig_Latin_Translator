@@ -1,9 +1,8 @@
+val vowels:  CharArray = charArrayOf('a', 'e', 'i', 'o', 'u')
+
 fun main(args: Array<String>) {
     var name = readLine().toString()
-
-    var consonant: String = getConsonantCluster(name)
-    var subSeq: String = name.subSequence(1, name.length).toString()
-    var translation = subSeq.plus(consonant.plus("ay"))
+    var translation = translator(name)
 
     println(translation)
 }
@@ -19,12 +18,20 @@ fun translator(word: String): String {
     // Initialize variables
     translation = word
 
-    consanant_cluster = getConsonantCluster(translation)
-
-    translation = translation.substringAfter(consanant_cluster)
-
-    translation.plus(consanant_cluster.plus(code))
-
+    var beginsWithVowel: Boolean = false
+    for (vowel in vowels) {
+        if (translation[0] == vowel) {
+            beginsWithVowel = true
+            break
+        }
+    }
+    if (!beginsWithVowel) {
+        consanant_cluster = getConsonantCluster(translation)
+        translation = translation.substringAfter(consanant_cluster)
+        translation = translation.plus(consanant_cluster.plus(code))
+    } else {
+        translation = translation.plus(code)
+    }
     return translation
 }
 
