@@ -1,6 +1,6 @@
 # Pig Latin Translator
 ### Written with the Kotlin Language
-#### Closed
+#### << Closed >>
 
 Author: Cameron (wetzel-cam) Wetzel
 
